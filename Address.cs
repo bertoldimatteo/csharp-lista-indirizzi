@@ -20,7 +20,7 @@ class Address
         this.zip = zip;
     }
 
-    public string printAddress()
+    public override string ToString()
     {
         string text = "------ Address ------\n";
         text += "Name:\t" + this.name + "\n";

@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-StreamReader addresses = File.OpenText("../../../addresses.txt");
+using System.Xml.Linq;
+
+StreamReader addresses = File.OpenText("addresses.txt");
 List<Address> resultList = new List<Address>();
 addresses.ReadLine();
 
@@ -25,7 +27,7 @@ while (!addresses.EndOfStream)
         Address address = new Address(name, surname, street, city, province, zip);
         resultList.Add(address);
 
-        Console.WriteLine("Address {0}", name);
+        Console.WriteLine(address);
     }
     catch (Exception e)
     {
@@ -43,9 +45,8 @@ try
 
     foreach (Address address in resultList)
     {
-        Console.WriteLine("Saving {0}", address.name);
         newAddress.WriteLine();
-        newAddress.WriteLine(address.printAddress());
+        newAddress.WriteLine(address.ToString());
     }
 
     newAddress.Close();
